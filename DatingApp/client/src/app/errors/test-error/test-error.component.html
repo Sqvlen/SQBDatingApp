@@ -1,0 +1,16 @@
+<ng-container>
+    <button class="btn btn-dark btn-lg me-2" (click)="getNotFoundError()">Not-Found-404</button>
+    <button class="btn btn-dark btn-lg me-2" (click)="getBadRequestError()">Bad-Request-400</button>
+    <button class="btn btn-dark btn-lg me-2" (click)="getServerError()">Server-Error-500</button>
+    <button class="btn btn-dark btn-lg me-2" (click)="getAuthError()">Auth-Error-401</button>
+    <button class="btn btn-dark btn-lg me-2" (click)="getValidaitonError()">Validation-Error-405</button>
+
+
+    <div class="row mt-5" *ngIf="_validationErrors.length > 0">
+        <ul class="text-danger">
+            <li *ngFor="let error of _validationErrors">
+                {{error}}
+            </li>
+        </ul>
+    </div>
+</ng-container>

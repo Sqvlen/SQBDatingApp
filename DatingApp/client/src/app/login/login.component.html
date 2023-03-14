@@ -1,0 +1,25 @@
+<div class="modal-content rounded-4 shadow container">
+    <div class="modal-header p-5 pb-0 border-bottom-0">
+        <h1 class="fw-bold mb-0 fs-2">Login</h1>
+    </div>
+    <hr class="divider">
+    <div class="modal-body p-3 pt-0r">
+        <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="loginForm.valid && login()">
+            <div class="form-floating mb-3">
+                <app-text-input [id]="'floatingInput'" [formControl]="$any(loginForm.controls['username'])" [label]="'Username'"></app-text-input>
+            </div>
+            <div class="form-floating mb-3">
+                <app-text-input [type]="'password'" [id]="'floatingPassword'" [formControl]="$any(loginForm.controls['password'])" [label]="'Password'"></app-text-input>
+            </div>
+
+            <div class="row" *ngIf="validationErrors">
+                <ul class="text-danger">
+                    <li *ngFor="let error of validationErrors">{{error}}</li>
+                </ul>
+            </div>
+
+            <button [disabled]="!loginForm.valid" class="btn btn-dark btn-lg text-center me-3" type="submit">Login</button>
+            <button class="btn btn-dark btn-lg text-center" type="button" (click)="cancel()">Cancel</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="modal-content rounded-4 shadow container">
+    <div class="modal-header p-5 pb-0 border-bottom-0">
+        <h1 class="fw-bold mb-0 fs-3">Sign up for free</h1>
+    </div>
+    <hr class="divider">
+    <div class="modal-body p-3 pt-0r">
+        <form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="registerForm.valid && register()">
+
+            <div class="mb-3">
+                <label style="margin-right: 10px;">I am a: </label>
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="male" formControlName="gender"> Male
+                </label>
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input ms-3" value="female" formControlName="gender"> Female
+                </label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <app-text-input [id]="'floatingInput'" [formControl]="$any(registerForm.controls['username'])" [label]="'Username'"></app-text-input>
+            </div>
+        
+            <div class="form-floating mb-3">
+                <app-text-input [id]="'floatingKnownAs'" [formControl]="$any(registerForm.controls['knownAs'])" [label]="'Known As'"></app-text-input>
+            </div>
+
+            <div class="form-floating mb-3">
+                <app-date-picker [id]="'floatingInputDate'" [minDate]="minDate" [maxDate]="maxDate" [formControl]="$any(registerForm.controls['dateOfBirth'])" [label]="'Date of Birth'"></app-date-picker>
+            </div>
+
+            <div class="form-floating mb-3">
+                <app-text-input [id]="'floatingCity'" [formControl]="$any(registerForm.controls['city'])" [label]="'City'"></app-text-input>
+            </div>
+
+            <div class="form-floating mb-3">
+                <app-text-input [id]="'floatingCoutry'" [formControl]="$any(registerForm.controls['country'])" [label]="'Country'"></app-text-input>
+            </div>
+
+            <div class="form-floating mb-3">
+                <app-text-input id="floatingPassword" [type]="'password'" [formControl]="$any(registerForm.controls['password'])" [label]="'Password'"></app-text-input>
+            </div>
+
+            <div class="form-floating mb-3">
+                <app-text-input id="floatingConfirmPassword" [type]="'password'" [formControl]="$any(registerForm.controls['confirmPassword'])" [label]="'Confirm Password'"></app-text-input>
+            </div>
+
+            <div class="row" *ngIf="validationErrors">
+                <ul class="text-danger">
+                    <li *ngFor="let error of validationErrors">{{error}}</li>
+                </ul>
+            </div>
+
+            <button [disabled]="!registerForm.valid" class="btn btn-dark btn-lg text-center me-3" type="submit">Sign up!</button>
+            <button class="btn btn-dark btn-lg text-center" type="button" (click)="cancel()">Cancel</button>
+        </form>
+    </div>
+</div>

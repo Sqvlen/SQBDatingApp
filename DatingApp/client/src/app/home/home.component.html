@@ -1,0 +1,33 @@
+<div class="container mt-5 rounded-3 border shadow-lg">
+    <div class="lg-7 p-3 p-lg-5 pt-lg-5">
+        <div style="text-align: center;" *ngIf="!registerMode">
+            <div *ngIf="!loginMode">
+                <h1>Find your match</h1>
+                <p class="lead">Sign up!</p>
+                <div class="text-center">
+                    <button class="btn btn-dark btn-lg me-2" (click)="registerToggle()">Register</button>
+                    <button class="btn btn-dark btn-lg me-2" (click)="loginToggle()">Login</button>
+                    <button class="btn btn-dark btn-lg me-2">Learn more</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" *ngIf="registerMode">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" *ngIf="loginMode">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <app-login (cancelLogin)="cancelLoginMode($event)"></app-login>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

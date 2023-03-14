@@ -1,0 +1,14 @@
+nav
+{
+    background-color: black;
+}
+
+.dropdown-menu, .dropdown-item, .dropdown.text-end, .nav-link
+{
+    cursor: pointer;
+}
+
+img
+{
+    display: inline;
+}

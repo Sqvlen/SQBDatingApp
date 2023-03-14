@@ -1,0 +1,50 @@
+<nav class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-0 justify-content-center mb-md-0">
+        <li><a class="nav-link px-2 link-light" id="navbar-brand" routerLink="/members">SQB</a></li>
+        <ng-container *ngIf="accountService.currentUser$  | async">
+          <li class="nav-item"><a class="nav-link px-2 link-secondary" routerLink="/members" routerLinkActive="link-light"
+              [routerLinkActiveOptions]="{exact: true}">Matches</a>
+          </li>
+          <li class="nav-item"><a class="nav-link px-2 link-secondary" routerLink="/lists" routerLinkActive="link-light">Lists</a></li>
+          <li class="nav-item"><a class="nav-link px-2 link-secondary" routerLink="/messages" routerLinkActive="link-light">Messages</a>
+          </li>
+          <li *appHasRole="['Admin', 'Moderator']" class="nav-item"><a class="nav-link px-2 link-secondary" routerLink="/admin" routerLinkActive="link-light">Admin</a>
+          </li>
+          <li *appHasRole="['Admin', 'Moderator']" class="nav-item"><a class="nav-link px-2 link-secondary" routerLink="/errors" routerLinkActive="link-light">Errors</a>
+          </li>
+        </ng-container>
+        <!-- <li><a class="nav-link px-2 link-secondary" routerLink="/home" routerLinkActive="link-light">Home</a></li> -->
+      </ul>
+
+      <!-- <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off" *ngIf="!(accountService.currentUser$  | async)">
+        <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="Username">
+        <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password" placeholder="Password">
+        <button type="submit" class="btn btn-outline-light">Login</button>
+      </form>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"></form> -->
+
+
+      <div class="dropdown text-end" *ngIf="(accountService.currentUser$  | async) as user" dropdown>
+        <a class="d-block link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" dropdownToggle>
+          <img src="{{user?.photoUrl || './assets/user.png'}}" alt="User photo" width="32" height="32"
+            class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small mt-2" *dropdownMenu>
+          <li><a class="dropdown-item" routerLink="/member/profile">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" routerLink="/member/edit">Edit profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</nav>
