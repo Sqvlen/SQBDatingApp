@@ -23,6 +23,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}:WebAPI"
+          context: "{{defaultContext}}:DatingApp/WebAPI"
           push: true
           tags: sqvlen/datingapp:latest
